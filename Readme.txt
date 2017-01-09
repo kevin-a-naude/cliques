@@ -48,7 +48,7 @@ Two datasets are provided:
 Two shell scripts are provided for generating synthetic graph datasets
 
     generate-dataset-TCS-article.sh
-    -- generates a dataset of the same form as that used in Naude (2016)
+    -- generates a dataset of the same form as that used in Naudé (2016)
 
     generate-dataset-TCS-article-small.sh
     -- as above, but each category is restricted to 30 graph instances
@@ -65,5 +65,5 @@ Utilities provided
     gnp -- generate graphs by Gnp model
     
     tomita -- apply clique enumeration of Tomita et al. (2006)
-    naude  -- apply clique enumeration of Naude (2016)
+    naude  -- apply clique enumeration of Naudé (2016)
 
