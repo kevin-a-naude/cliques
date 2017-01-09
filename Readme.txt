@@ -57,12 +57,12 @@ Utilities provided
 ------------------
 
     degseq -- show degree sequence and graph properties
-    gcut -- generate a graph with cliques separated by a cut vertex
-    gk -- generate complete graphs
-    gkbip -- generate complete bipartite graphs
-    gnd -- generate graphs by Gnm model, with specific density
-    gnm -- generate graphs by Gnm model
-    gnp -- generate graphs by Gnp model
+    gcut   -- generate a graph with cliques separated by a cut vertex
+    gk     -- generate complete graphs
+    gkbip  -- generate complete bipartite graphs
+    gnd    -- generate graphs by Gnm model, with specific density
+    gnm    -- generate graphs by Gnm model
+    gnp    -- generate graphs by Gnp model
     
     tomita -- apply clique enumeration of Tomita et al. (2006)
     naude  -- apply clique enumeration of Naudé (2016)
