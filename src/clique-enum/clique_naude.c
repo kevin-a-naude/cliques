@@ -115,7 +115,7 @@ void clique_enum_naude_apply(clique_context_t* self, intset_t* p, intset_t* x, i
         intset_walk(&it, q);
         while (intset_walk_next(&it, &v))
         {
-            intset_remove(p, v, true);
+            intset_remove(p, v, false);
 
             nv = adjacency_row(self->matrix, v);
             p2 = intset_copy_intersect(p, nv);
