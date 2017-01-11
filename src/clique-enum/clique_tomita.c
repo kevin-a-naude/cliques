@@ -52,7 +52,7 @@ void clique_enum_tomita_apply(clique_context_t* self, intset_t* p, intset_t* x, 
         intset_walk(&it, q);
         while (intset_walk_next(&it, &v))
         {
-            intset_remove(p, v, false);
+            intset_remove(p, v, true);
 
             nv = adjacency_row(self->matrix, v);
 
@@ -61,7 +61,7 @@ void clique_enum_tomita_apply(clique_context_t* self, intset_t* p, intset_t* x, 
 
             intset_add(r, v);
             clique_enum_tomita_apply(self, p2, x2, r);
-            intset_remove(r, v, false);
+            intset_remove(r, v, true);
 
             intset_recycle(x2);
             intset_recycle(p2);

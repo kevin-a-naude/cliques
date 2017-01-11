@@ -115,7 +115,7 @@ void clique_enum_naude_apply(clique_context_t* self, intset_t* p, intset_t* x, i
         intset_walk(&it, q);
         while (intset_walk_next(&it, &v))
         {
-            intset_remove(p, v, false);
+            intset_remove(p, v, true);
 
             nv = adjacency_row(self->matrix, v);
             p2 = intset_copy_intersect(p, nv);
@@ -123,7 +123,7 @@ void clique_enum_naude_apply(clique_context_t* self, intset_t* p, intset_t* x, i
 
             intset_add(r, v);
             clique_enum_naude_apply(self, p2, x2, r);
-            intset_remove(r, v, false);
+            intset_remove(r, v, true);
 
             intset_recycle(x2);
             intset_recycle(p2);
@@ -144,7 +144,7 @@ void clique_enum_naude_apply(clique_context_t* self, intset_t* p, intset_t* x, i
     }
     if (extra != NULL)
     {
-        intset_remove_all(r, extra, false);
+        intset_remove_all(r, extra, true);
         intset_recycle(extra);
     }
 }
