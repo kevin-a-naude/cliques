@@ -6,6 +6,7 @@ intset_t* clique_enum_naude_pivot_extra(clique_context_t* ctx, intset_t* p, ints
     size_t v, q, least;
     intset_walk_t it;
     intset_t *nv, *nw, *Q, *ex = NULL;
+    uint64_t numInPivot = ctx->numInPivot;
     size_t domain = ctx->n;
 
 search:
@@ -35,7 +36,7 @@ search:
                     {
                         ex = intset(domain, false, &ctx->manager);
                     }
-                    ctx->numInPivot++;
+                    numInPivot++;
                     intset_add(ex, w);
                     intset_add(r, w);
                     intset_intersect(p, nw, false);
@@ -74,7 +75,7 @@ search:
                     {
                         ex = intset(domain, false, &ctx->manager);
                     }
-                    ctx->numInPivot++;
+                    numInPivot++;
                     intset_add(ex, v);
                     intset_add(r, v);
                     intset_intersect(p, nv, false);
@@ -92,6 +93,7 @@ search:
     }
 
 conclude:
+    ctx->numInPivot = numInPivot;
     *extra = ex;
     if (q < domain)
     {
