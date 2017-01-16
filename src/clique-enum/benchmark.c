@@ -37,8 +37,8 @@ bool clique_enum_test(FILE* fout, const char* filename, clique_context_t* cc, ui
 
         dimacs_graph_stats(&bm, NULL, NULL, NULL, &degreeVariance, false);
 
-        fprintf(fout, "%s,%s,%d,%d,%.6f,%d,%"PRId64",%"PRId64",%"PRId64",%.6f\n",
-            cc->algorithm, os_basename(filename), numVertices, numEdges, degreeVariance, (int)cc->maxClique, cc->numCalls, cc->numInPivot, cc->numCliques, timer.seconds);
+        fprintf(fout, "%s,%s,%d,%d,%.6f,%d,%"PRId64",%"PRId64",%"PRId64",%"PRId64",%.6f\n",
+            cc->algorithm, os_basename(filename), numVertices, numEdges, degreeVariance, (int)cc->maxClique, cc->numCalls, cc->numInPivot, cc->numSearchRestarts, cc->numCliques, timer.seconds);
         fflush(fout);
         *numCliques = cc->numCliques;
         *seconds = timer.seconds;

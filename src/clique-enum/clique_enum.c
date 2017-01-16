@@ -10,6 +10,7 @@ void clique_context(clique_context_t* self, clique_enum_start_function start)
     self->maxClique = 0;
     self->numCalls = 0;
     self->numInPivot = 0;
+    self->numSearchRestarts = 0;
     self->numCliques = 0;
 
     self->matrix = NULL;
@@ -27,6 +28,7 @@ void enumerate_cliques(clique_context_t* self, adjacency_t* adjacency)
     self->maxClique = 0;
     self->numCalls = 0;
     self->numInPivot = 0;
+    self->numSearchRestarts = 0;
     self->numCliques = 0;
 
     self->matrix = adjacency;

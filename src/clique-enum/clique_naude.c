@@ -6,10 +6,12 @@ intset_t* clique_enum_naude_pivot_extra(clique_context_t* ctx, intset_t* p, ints
     size_t v, q, least;
     intset_walk_t it;
     intset_t *nv, *nw, *Q, *ex = NULL;
+    uint64_t numSearchRestarts = ctx->numSearchRestarts;
     uint64_t numInPivot = ctx->numInPivot;
     size_t domain = ctx->n;
 
 search:
+    numSearchRestarts++;
     q = domain; // an initial value which is not a valid vertex
     least = domain + 1; // not infinity, but large enough
 
@@ -93,6 +95,7 @@ search:
     }
 
 conclude:
+    ctx->numSearchRestarts = (numSearchRestarts - 1); // first iteration is not a restart
     ctx->numInPivot = numInPivot;
     *extra = ex;
     if (q < domain)

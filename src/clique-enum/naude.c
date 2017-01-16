@@ -49,7 +49,7 @@ int main(int argc, const char* argv[])
 
         if (write_headers)
         {
-            fprintf(fout, "algorithm,filename,num-vertices,num-edges,deg-variance,max-clique-size,num-rec-calls,num-in-pivot,num-cliques,seconds\n");
+            fprintf(fout, "algorithm,filename,num-vertices,num-edges,deg-variance,max-clique-size,num-rec-calls,num-in-pivot,num-search-restarts,num-cliques,seconds\n");
             fflush(fout);
         }
 

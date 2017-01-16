@@ -20,7 +20,7 @@ FILES=$(echo "$FILES" | tr ' ' '\n' )
 
 if [ "x${DEST}" != "x" ]; then
     if [ ! -f "${DEST}" ]; then
-        echo "algorithm,filename,num-vertices,num-edges,deg-variance,max-clique-size,num-rec-calls,num-in-pivot,num-cliques,seconds" >>"${DEST}"
+        echo "algorithm,filename,num-vertices,num-edges,deg-variance,max-clique-size,num-rec-calls,num-in-pivot,num-search-restarts,num-cliques,seconds" >>"${DEST}"
     fi
     "${ALGORITHM}" ${FILES} | tee -a "${DEST}"
 else
