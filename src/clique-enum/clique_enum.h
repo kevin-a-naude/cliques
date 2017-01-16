@@ -22,6 +22,7 @@ struct __clique_context_t
 
     size_t maxClique;
     uint64_t numCalls;
+    uint64_t numInPivot;
     uint64_t numCliques;
 
     adjacency_t* matrix;

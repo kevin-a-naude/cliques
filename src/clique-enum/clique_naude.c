@@ -34,6 +34,7 @@ search:
                     {
                         ex = intset(ctx->n, false, &ctx->manager);
                     }
+                    ctx->numInPivot++;
                     intset_add(ex, w);
                     intset_add(r, w);
                     intset_intersect(p, nw, false);
@@ -72,6 +73,7 @@ search:
                     {
                         ex = intset(ctx->n, false, &ctx->manager);
                     }
+                    ctx->numInPivot++;
                     intset_add(ex, v);
                     intset_add(r, v);
                     intset_intersect(p, nv, false);
