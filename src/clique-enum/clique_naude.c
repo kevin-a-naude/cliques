@@ -6,10 +6,11 @@ intset_t* clique_enum_naude_pivot_extra(clique_context_t* ctx, intset_t* p, ints
     size_t v, q, least;
     intset_walk_t it;
     intset_t *nv, *nw, *Q, *ex = NULL;
+    size_t domain = ctx->n;
 
 search:
-    q = ctx->n; // an initial value which is not a valid vertex
-    least = ctx->n + 1; // not infinity, but large enough
+    q = domain; // an initial value which is not a valid vertex
+    least = domain + 1; // not infinity, but large enough
 
     intset_walk(&it, x);
     while (intset_walk_next(&it, &v))
@@ -32,7 +33,7 @@ search:
                     nw = adjacency_row(ctx->matrix, w);
                     if (ex == NULL)
                     {
-                        ex = intset(ctx->n, false, &ctx->manager);
+                        ex = intset(domain, false, &ctx->manager);
                     }
                     ctx->numInPivot++;
                     intset_add(ex, w);
@@ -40,7 +41,7 @@ search:
                     intset_intersect(p, nw, false);
                     intset_intersect(x, nw, false);
 
-                    if (!intset_contains(nw, q)) goto search;
+                    if ((q < domain) && !intset_contains(nw, q)) goto search;
                 }
             }
             else
@@ -71,7 +72,7 @@ search:
                     /// Process v in place
                     if (ex == NULL)
                     {
-                        ex = intset(ctx->n, false, &ctx->manager);
+                        ex = intset(domain, false, &ctx->manager);
                     }
                     ctx->numInPivot++;
                     intset_add(ex, v);
@@ -79,7 +80,7 @@ search:
                     intset_intersect(p, nv, false);
                     intset_intersect(x, nv, false);
 
-                    if (!intset_contains(nv, q)) goto search;
+                    if ((q < domain) && !intset_contains(nv, q)) goto search;
                 }
             }
             else
@@ -92,7 +93,7 @@ search:
 
 conclude:
     *extra = ex;
-    if (q < ctx->n)
+    if (q < domain)
     {
         nv = adjacency_row(ctx->matrix, q);
         Q = intset_copy_remove(p, nv);
